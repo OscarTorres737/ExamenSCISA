@@ -1,0 +1,15 @@
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\bin\Debug\net8.0\ExamenSCISA.Presentation.deps.json
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\bin\Debug\net8.0\ExamenSCISA.Presentation.dll
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\bin\Debug\net8.0\ExamenSCISA.Presentation.pdb
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\bin\Debug\net8.0\ExamenSCISA.Application.dll
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\bin\Debug\net8.0\ExamenSCISA.Application.pdb
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ExamenSCISA.Presentation.csproj.AssemblyReference.cache
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ExamenSCISA.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ExamenSCISA.Presentation.AssemblyInfoInputs.cache
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ExamenSCISA.Presentation.AssemblyInfo.cs
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ExamenSCISA.Presentation.csproj.CoreCompileInputs.cache
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ExamenSC.4FD0D5C0.Up2Date
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ExamenSCISA.Presentation.dll
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\refint\ExamenSCISA.Presentation.dll
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ExamenSCISA.Presentation.pdb
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Presentation\obj\Debug\net8.0\ref\ExamenSCISA.Presentation.dll
