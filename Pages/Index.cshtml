@@ -1,10 +1,160 @@
 ﻿@page
-@model IndexModel
+@model ExamenSCISA.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Pokemones";
+}
+@{
+    var traducciones = new Dictionary<string, string> {
+        {"normal","Normal"}, {"fire","Fuego"}, {"water","Agua"}, {"grass","Planta"},
+        {"electric","Eléctrico"}, {"ice","Hielo"}, {"fighting","Lucha"}, {"poison","Veneno"},
+        {"ground","Tierra"}, {"flying","Volador"}, {"psychic","Psíquico"}, {"bug","Bicho"},
+        {"rock","Roca"}, {"ghost","Fantasma"}, {"dragon","Dragón"}, {"dark","Siniestro"},
+        {"steel","Acero"}, {"fairy","Hada"}
+    };
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-4">
+
+    <!-- filtros -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <form method="get" class="row g-2">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="NombreFiltro" placeholder="Buscar por nombre..." value="@Model.NombreFiltro" />
+                </div>
+                <div class="col-md-6">
+                    <select class="form-select" name="EspecieFiltro">
+                        <option value="">Todos los tipos</option>
+                        @foreach (var tipo in Model.TiposElementales)
+                        {
+                            var texto = traducciones.ContainsKey(tipo) ? traducciones[tipo] : tipo;
+                            <option value="@tipo" selected="@(Model.EspecieFiltro == tipo ? "selected" : null)">
+                                @texto
+                            </option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <button type="submit" class="btn btn-success">Filtrar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- botones -->
+        <div class="col-md-6 d-flex justify-content-end align-items-start">
+            <form method="post" asp-page-handler="ExportarExcel" class="me-2">
+                <input type="hidden" name="NombreFiltro" value="@Model.NombreFiltro" />
+                <input type="hidden" name="EspecieFiltro" value="@Model.EspecieFiltro" />
+                <input type="hidden" name="Pagina" value="@Model.PaginaActual" />
+                <button type="submit" class="btn btn-outline-primary">Exportar a Excel</button>
+            </form>
+
+            <!--btn que abre modal -->
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalCorreo">
+                Enviar por correo
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Modal para enviar correo -->
+    <div class="modal fade" id="modalCorreo" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" asp-page-handler="EnviarCorreo">
+                    <input type="hidden" name="NombreFiltro" value="@Model.NombreFiltro" />
+                    <input type="hidden" name="EspecieFiltro" value="@Model.EspecieFiltro" />
+                    <input type="hidden" name="Pagina" value="@Model.PaginaActual" />
+                    <div class="modal-header">
+                        <h5 class="modal-title">Enviar listado de Pokemones</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="correoDestino" class="form-label">Correo destino</label>
+                            <input type="email" class="form-control" name="correoDestino" id="correoDestino" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="asuntoCorreo" class="form-label">Asunto</label>
+                            <input type="text" class="form-control" name="asuntoCorreo" id="asuntoCorreo" value="Pokemones" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-warning">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- tabla de Cards -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var p in Model.Pokemones)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="@p.ImagenUrl" class="card-img-top" alt="@p.Nombre">
+                    <div class="card-body">
+                        <h5 class="card-title text-capitalize">@p.Nombre</h5>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="cargarDetalle('@p.Nombre')" data-bs-toggle="modal" data-bs-target="#modalDetalle">
+                            Ver detalles
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- moal único para todos los pokemon -->
+    <div class="modal fade" id="modalDetalle" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalTitulo"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalCuerpo">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- pagniacion manual -->
+    <div class="row mt-4">
+        <div class="col d-flex justify-content-center">
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item @(Model.PaginaActual == 1 ? "disabled" : "")">
+                        <a class="page-link" href="?pagina=@(Model.PaginaActual - 1)&NombreFiltro=@Model.NombreFiltro&EspecieFiltro=@Model.EspecieFiltro">Anterior</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?pagina=@(Model.PaginaActual + 1)&NombreFiltro=@Model.NombreFiltro&EspecieFiltro=@Model.EspecieFiltro">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
+
+<script>
+    async function cargarDetalle(nombre) {
+        const response = await fetch(`?handler=Detalle&nombre=${nombre}`);
+        if (!response.ok) return;
+
+        const data = await response.json();
+
+        document.getElementById("modalTitulo").innerText = data.nombre;
+        document.getElementById("modalCuerpo").innerHTML = `
+            <img src="${data.imagenUrl}" class="img-fluid mb-3">
+            <p><strong>Especie:</strong> ${data.especie}</p>
+            <p><strong>Altura:</strong> ${data.altura}</p>
+            <p><strong>Peso:</strong> ${data.peso}</p>
+            <p><strong>Habilidades:</strong> ${data.habilidades.join(", ")}</p>
+        `;
+    }
+</script>
