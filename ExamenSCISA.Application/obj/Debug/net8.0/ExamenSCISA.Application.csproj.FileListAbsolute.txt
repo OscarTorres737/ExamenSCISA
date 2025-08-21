@@ -1,0 +1,11 @@
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\bin\Debug\net8.0\ExamenSCISA.Application.deps.json
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\bin\Debug\net8.0\ExamenSCISA.Application.dll
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\bin\Debug\net8.0\ExamenSCISA.Application.pdb
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\obj\Debug\net8.0\ExamenSCISA.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\obj\Debug\net8.0\ExamenSCISA.Application.AssemblyInfoInputs.cache
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\obj\Debug\net8.0\ExamenSCISA.Application.AssemblyInfo.cs
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\obj\Debug\net8.0\ExamenSCISA.Application.csproj.CoreCompileInputs.cache
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\obj\Debug\net8.0\ExamenSCISA.Application.dll
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\obj\Debug\net8.0\refint\ExamenSCISA.Application.dll
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\obj\Debug\net8.0\ExamenSCISA.Application.pdb
+C:\Users\oscar\source\repos\ExamenSCISA\ExamenSCISA.Application\obj\Debug\net8.0\ref\ExamenSCISA.Application.dll
